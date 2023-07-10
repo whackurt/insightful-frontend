@@ -9,7 +9,9 @@ const Footer = () => {
 				<RiLightbulbFlashLine size={30} />
 				<h1 className="text-2xl ">insightful</h1>
 			</div>
-			<p className="text-sm mt-2">Copyright &copy; 2023 insightful</p>
+			<p className="text-sm mt-2">
+				Developed by <strong>Kurt Timajo</strong>
+			</p>
 		</div>
 	);
 };
