@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap');
+#root {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.article {
+	font-family: 'Poppins', sans-serif;
+}
+.file-input,
+.write-form {
+	background-color: rgb(238, 238, 238);
+	color: black;
+}
+.content,
+.intro {
+	font-family: 'Bacasime Antique', serif;
+}
+
+.title {
+	cursor: pointer;
+}
+
+.title:hover,
+.appBtn:hover {
+	color: rgb(180, 180, 180);
+}
+
+.date {
+	color: rgb(185, 185, 185);
+}
+
+input,
+textarea {
+	color: black;
+}
