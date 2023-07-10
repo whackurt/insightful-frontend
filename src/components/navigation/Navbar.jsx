@@ -75,7 +75,11 @@ const Navbar = () => {
 					<ul className="flex flex-col gap-y-2 justify-center items-center">
 						{sections.map((section) => (
 							<Link
-								className="text-sm cursor-pointer hover:text-purple"
+								className={`text-sm cursor-pointer ${
+									location.pathname === section.route
+										? 'text-purple border-b border-purple'
+										: ' '
+								}`}
 								key={sections.indexOf(section)}
 								to={`${section.route}`}
 							>
@@ -84,13 +88,21 @@ const Navbar = () => {
 						))}
 						<Link
 							to={'/login'}
-							className="text-sm cursor-pointer border-b hover:text-gray-400"
+							className={`text-sm cursor-pointer border-b hover:text-gray-400 ${
+								location.pathname === '/login'
+									? 'text-purple border-b border-purple'
+									: ' '
+							}`}
 						>
 							Login
 						</Link>
 						<Link
 							to={'/signup'}
-							className="text-sm cursor-pointer border-b hover:text-gray-400"
+							className={`text-sm cursor-pointer border-b hover:text-gray-400 ${
+								location.pathname === '/signup'
+									? 'text-purple border-b border-purple'
+									: ' '
+							}`}
 						>
 							Sign Up
 						</Link>

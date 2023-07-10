@@ -40,11 +40,11 @@ const Home = ({ prev, setPrev }) => {
 
 				{/* Subscription */}
 				<div className="py-16">
-					<div className="bg-purple shadow-md border rounded-md p-4 text-white text-center">
+					<div className="bg-white shadow-md border border-purple rounded-md p-4 text-purple text-center">
 						<h1 className="font-bold lg:text-3xl font-poppins">
 							Want to receive emails?
 						</h1>
-						<p className="lg:text-lg lg:w-3/4 mx-auto text-center">
+						<p className="lg:text-lg lg:w-3/4 mx-auto text-center text-mainText">
 							Sign up to get an email every time a new blog is published. Only
 							happens once a month!
 						</p>
