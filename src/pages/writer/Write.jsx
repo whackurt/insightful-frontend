@@ -161,7 +161,7 @@ const Write = ({ user }) => {
 								/>
 								<label
 									htmlFor="featured-checkbox"
-									className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+									className="ml-2 text-sm font-medium text-gray-900 "
 								>
 									Feature Post
 								</label>
@@ -174,7 +174,7 @@ const Write = ({ user }) => {
 										setOpenModal(true);
 									}
 								}}
-								className="cursor-pointer py-2 rounded border"
+								className="bg-purple text-white rounded-[50px] cursor-pointer py-2 hover:shadow-lg"
 							>
 								Publish Post
 							</button>
