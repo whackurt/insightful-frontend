@@ -49,7 +49,7 @@ function App() {
 				<Route
 					exact
 					path="/posts"
-					element={<Posts prev={prevPage} setPrev={setPrevPage} />}
+					element={<Posts user={user} prev={prevPage} setPrev={setPrevPage} />}
 				/>
 				<Route
 					exact

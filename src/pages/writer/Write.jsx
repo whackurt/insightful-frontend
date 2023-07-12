@@ -7,6 +7,7 @@ import SectionLabel from '../../components/label/SectionLabel';
 import { useNavigate } from 'react-router-dom';
 
 const Write = ({ user }) => {
+	const [loading, setLoading] = useState(false);
 	const [post, setPostData] = useState({
 		title: '',
 		featured: false,
@@ -61,6 +62,7 @@ const Write = ({ user }) => {
 	};
 
 	const submitPost = async () => {
+		setLoading(true);
 		await NewPost(localStorage.getItem('token'), {
 			title: post.title,
 			summary: summary,
@@ -68,8 +70,8 @@ const Write = ({ user }) => {
 			featured: post.featured,
 			author: localStorage.getItem('user_id'),
 		}).then((res) => {
-			console.log(res);
 			setSuccessMsg('Post published successfully');
+			setLoading(false);
 			setTimeout(() => {
 				setPostData({
 					title: '',
@@ -86,6 +88,7 @@ const Write = ({ user }) => {
 			<WtContainer user={user}>
 				{openModal ? (
 					<Modal
+						loading={loading}
 						openModal={setOpenModal}
 						message={'Are you sure you want to publish this post?'}
 						successMsg={success}

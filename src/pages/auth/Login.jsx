@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserLogin } from '../../services/auth/auth';
 import { useReload } from '../../hooks/useReload';
 import Container from '../../components/containers/Container';
+import AuthSpinner from '../../components/spinners/AuthSpinner';
 
 const Login = ({ setLoggedIn }) => {
+	const [loading, setLoading] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
@@ -38,14 +40,17 @@ const Login = ({ setLoggedIn }) => {
 		const emptyFields = checkIfEmpty(creds);
 
 		if (!emptyFields) {
+			setLoading(true);
 			await UserLogin(creds).then((res) => {
 				if (res.hasOwnProperty('accessToken')) {
 					localStorage.setItem('token', res.accessToken);
 					localStorage.setItem('user_id', res.id);
 					setLoggedIn(true);
 					sessionStorage.clear();
+					setLoading(false);
 					navigate('/home');
 				} else {
+					setLoading(false);
 					setError(true);
 					setTimeout(() => {
 						setError(false);
@@ -117,8 +122,9 @@ const Login = ({ setLoggedIn }) => {
 								onClick={() => login({ email: email, password: password })}
 								className="border font-semibold py-1 cursor-pointer rounded w-full mt-16 bg-purple text-white  hover:shadow-lg"
 							>
-								Login
+								{!loading ? 'Login' : <AuthSpinner />}
 							</button>
+
 							<div className="flex text-sm my-4 gap-x-1">
 								<p> Don't have an account yet? </p>
 								<Link className="font-semibold hover:text-purple" to="/signup">

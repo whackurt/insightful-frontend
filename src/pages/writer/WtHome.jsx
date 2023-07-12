@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { GiPerspectiveDiceSixFacesFour } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import HomePosts from '../../components/posts/HomePosts';
 import { useReload } from '../../hooks/useReload';
