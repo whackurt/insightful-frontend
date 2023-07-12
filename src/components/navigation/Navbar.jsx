@@ -14,7 +14,7 @@ const Navbar = () => {
 	];
 
 	return (
-		<nav className="fixed px-8 py-4 bg-white w-full shadow-sm z-20 top-0 left-0">
+		<nav className="fixed border-b border-purple px-8 py-4 bg-white w-full shadow-sm z-20 top-0 left-0">
 			{/* main nav */}
 			<div className="hidden lg:grid lg:grid-cols-3">
 				<Link
@@ -39,8 +39,11 @@ const Navbar = () => {
 						</Link>
 					))}
 				</ul>
-				<div className="lg:flex gap-x-4 justify-center items-center">
-					<Link to={'/login'} className="hover:text-purple">
+				<div className="lg:flex gap-x-2 justify-center items-center">
+					<Link
+						to={'/login'}
+						className="bg-white text-purple border-mainText hover:shadow-lg hover:border-purple px-4 py-1 rounded-[50px] border"
+					>
 						Login
 					</Link>
 					<Link
@@ -54,10 +57,17 @@ const Navbar = () => {
 
 			{/* Hamburger */}
 			<div className="lg:hidden flex justify-between items-center">
-				<RiLightbulbFlashLine color="5300c7" size={35} />
-				<h1 className="lg:text-2xl font-poppins font-semibold text-purple">
+				<Link to={'/'} onClick={() => setBurgerOpen(false)}>
+					<RiLightbulbFlashLine color="5300c7" size={35} />
+				</Link>
+
+				<Link
+					to={'/'}
+					onClick={() => setBurgerOpen(false)}
+					className="lg:text-2xl font-poppins font-semibold text-purple"
+				>
 					insightful
-				</h1>
+				</Link>
 				<div>
 					<GiHamburgerMenu
 						color="5300c7"
@@ -69,7 +79,9 @@ const Navbar = () => {
 			{burgerOpen ? (
 				<div
 					className={`${
-						burgerOpen ? 'transition duration-150 translate-y-1' : null
+						burgerOpen
+							? 'border-t border-purple transition duration-150 translate-y-1'
+							: null
 					} ' pt-4'`}
 				>
 					<ul className="flex flex-col gap-y-2 justify-center items-center">
@@ -82,6 +94,7 @@ const Navbar = () => {
 								}`}
 								key={sections.indexOf(section)}
 								to={`${section.route}`}
+								onClick={() => setBurgerOpen(false)}
 							>
 								{section.name}
 							</Link>
@@ -93,6 +106,7 @@ const Navbar = () => {
 									? 'text-purple border-b border-purple'
 									: ' '
 							}`}
+							onClick={() => setBurgerOpen(false)}
 						>
 							Login
 						</Link>
@@ -103,6 +117,7 @@ const Navbar = () => {
 									? 'text-purple border-b border-purple'
 									: ' '
 							}`}
+							onClick={() => setBurgerOpen(false)}
 						>
 							Sign Up
 						</Link>

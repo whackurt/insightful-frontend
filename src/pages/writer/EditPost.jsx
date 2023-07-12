@@ -7,10 +7,16 @@ import { UpdatePost } from '../../services/post/post';
 import Modal from '../../components/modal/Modal';
 import WtContainer from '../../components/containers/WtContainer';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import PostSpinner from '../../components/spinners/PostSpinner';
 
 const EditPost = ({ prev }) => {
+	const [loading, setLoading] = useState(false);
+	const [updateLoading, setUpdateLoading] = useState(false);
 	const { postId } = useParams();
-	const { postdata } = useFetchSinglePost(postId);
+	const { postdata } = useFetchSinglePost({
+		id: postId,
+		setLoading: setLoading,
+	});
 	const [updates, setUpdates] = useState({});
 	const [summary, setSummary] = useState('');
 	const [body, setBody] = useState('');
@@ -18,18 +24,21 @@ const EditPost = ({ prev }) => {
 	const [updateSuccess, setUpdateSuccess] = useState('');
 
 	const saveChanges = async () => {
+		setUpdateLoading(true);
 		const updatedContent = {
 			title: updates?.title,
 			summary: summary,
 			content: body,
 			featured: updates.featured,
 		};
+
 		await UpdatePost(
 			localStorage.getItem('token'),
 			postId,
 			updatedContent
 		).then(() => {
 			setUpdateSuccess('Changes saved successfully.');
+			setUpdateLoading(false);
 			localStorage.removeItem('changesmade');
 		});
 	};
@@ -49,6 +58,7 @@ const EditPost = ({ prev }) => {
 		<WtContainer>
 			{openModal ? (
 				<Modal
+					loading={updateLoading}
 					openModal={setOpenModal}
 					message={'Are you sure you want to save changes for this post?'}
 					successMsg={updateSuccess}
@@ -67,61 +77,67 @@ const EditPost = ({ prev }) => {
 				</div>
 				<div className="w-full border border-mainText rounded my-8  px-2 lg:px-8 py-4 lg:py-16">
 					<div className="flex flex-col gap-y-8" action="">
-						<div>
-							{/* Title */}
-							<label htmlFor="title">Title</label>
-							<input
-								value={updates.title}
-								onChange={(e) =>
-									setUpdates({ ...updates, title: e.target.value })
-								}
-								className="w-full px-2 py-1"
-								name="title"
-								type="text"
-							/>
-						</div>
-						<label htmlFor="summary">Summary</label>
-						{!openModal ? (
-							<div className="write-form -mt-6">
-								<ReactQuill
-									theme="snow"
-									value={summary}
-									onChange={setSummary}
-								/>
-							</div>
-						) : null}
+						{loading ? (
+							<PostSpinner text={'Fetching post...'} />
+						) : (
+							<>
+								<div>
+									{/* Title */}
+									<label htmlFor="title">Title</label>
+									<input
+										value={updates.title}
+										onChange={(e) =>
+											setUpdates({ ...updates, title: e.target.value })
+										}
+										className="w-full px-2 py-1"
+										name="title"
+										type="text"
+									/>
+								</div>
+								<label htmlFor="summary">Summary</label>
+								{!openModal ? (
+									<div className="write-form -mt-6">
+										<ReactQuill
+											theme="snow"
+											value={summary}
+											onChange={setSummary}
+										/>
+									</div>
+								) : null}
 
-						<label htmlFor="summary">Body</label>
-						{!openModal ? (
-							<div className="write-form -mt-6">
-								<ReactQuill theme="snow" value={body} onChange={setBody} />
-							</div>
-						) : null}
+								<label htmlFor="summary">Body</label>
+								{!openModal ? (
+									<div className="write-form -mt-6">
+										<ReactQuill theme="snow" value={body} onChange={setBody} />
+									</div>
+								) : null}
 
-						<div className="flex items-center mb-4">
-							<input
-								checked={updates.featured}
-								onChange={() =>
-									setUpdates({ ...updates, featured: !updates.featured })
-								}
-								id="featured-checkbox"
-								type="checkbox"
-								className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-							/>
-							<label
-								htmlFor="featured-checkbox"
-								className="ml-2 text-sm font-medium"
-							>
-								Feature Post
-							</label>
-						</div>
+								<div className="flex items-center mb-4">
+									<input
+										checked={updates.featured}
+										onChange={() =>
+											setUpdates({ ...updates, featured: !updates.featured })
+										}
+										id="featured-checkbox"
+										type="checkbox"
+										className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+									/>
+									<label
+										htmlFor="featured-checkbox"
+										className="ml-2 text-sm font-medium"
+									>
+										Feature Post
+									</label>
+								</div>
 
-						<button
-							onClick={() => setOpenModal(true)}
-							className="border text-white bg-purple border-purple hover:shadow-lg px-2 py-1 rounded"
-						>
-							Save Changes
-						</button>
+								<button
+									onClick={() => setOpenModal(true)}
+									className="border text-white bg-purple border-purple hover:shadow-lg px-2 py-1 rounded"
+								>
+									Save Changes
+								</button>
+							</>
+						)}
 					</div>
 				</div>
 			</div>

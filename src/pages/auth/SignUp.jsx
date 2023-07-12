@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserSignUp } from '../../services/auth/auth';
 import Container from '../../components/containers/Container';
+import AuthSpinner from '../../components/spinners/AuthSpinner';
 
 const SignUp = () => {
+	const [loading, setLoading] = useState(false);
 	const [userInfo, setuserInfo] = useState({
 		first_name: '',
 		last_name: '',
@@ -50,7 +52,9 @@ const SignUp = () => {
 		const valid = validate(creds);
 
 		if (valid) {
+			setLoading(true);
 			await UserSignUp(creds).then(() => {
+				setLoading(false);
 				navigate('/login');
 			});
 		}
@@ -67,7 +71,6 @@ const SignUp = () => {
 								insightful
 							</strong>
 						</h1>
-						{/* {JSON.stringify(userInfo)} */}
 						{/* Login form */}
 						<div className="border shadow-lg mb-16 w-full lg:w-1/2 py-8 px-4 lg:px-6 rounded-md text-white bg-white min-h-[570px]">
 							<h1 className="font-bold text-2xl my-4 text-purple">
@@ -160,7 +163,7 @@ const SignUp = () => {
 								onClick={() => signup(userInfo)}
 								className="border font-semibold py-1 cursor-pointer rounded w-full mt-16 bg-purple text-white hover:shadow-lg"
 							>
-								Sign Up
+								{!loading ? 'Sign Up' : <AuthSpinner />}
 							</button>
 							<div className="flex gap-x-1 text-mainText text-sm my-4">
 								<p> Already have an account? </p>

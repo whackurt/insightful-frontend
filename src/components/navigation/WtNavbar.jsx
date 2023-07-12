@@ -55,7 +55,7 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 					<h1 className="text-purple font-semibold font-poppins">{`${user?.first_name} ${user?.last_name}`}</h1>
 					<Link
 						onClick={() => logout()}
-						className="bg-purple text-white hover:shadow-lg px-3 py-1 rounded-[50px] border"
+						className="bg-white text-purple border border-purple hover:shadow-lg px-3 py-1 rounded-[50px] border"
 					>
 						Logout
 					</Link>
@@ -64,8 +64,17 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 
 			{/* Hamburger */}
 			<div className="lg:hidden flex justify-between items-center">
-				<RiLightbulbFlashLine color="#5300c7" size={35} />
-				<h1 className="font-poppins text-purple font-semibold">insightful</h1>
+				<Link to={'/home'} onClick={() => setBurgerOpen(false)}>
+					<RiLightbulbFlashLine color="#5300c7" size={35} />
+				</Link>
+
+				<Link
+					to={'/home'}
+					onClick={() => setBurgerOpen(false)}
+					className="font-poppins text-purple font-semibold"
+				>
+					insightful
+				</Link>
 				<div>
 					<GiHamburgerMenu
 						color="#5300c7"
@@ -77,7 +86,9 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 			{burgerOpen ? (
 				<div
 					className={`${
-						burgerOpen ? 'transition duration-150 translate-y-1' : null
+						burgerOpen
+							? 'border-t border-purple transition duration-150 translate-y-1'
+							: null
 					} ' pt-4'`}
 				>
 					<ul className="flex flex-col gap-y-2 justify-center items-center">
@@ -90,13 +101,17 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 								}`}
 								key={sections.indexOf(section)}
 								to={`${section.route}`}
+								onClick={() => setBurgerOpen(false)}
 							>
 								{section.name}
 							</Link>
 						))}
 						<Link
-							onClick={() => logout()}
-							className="text-sm cursor-pointer hover:text-gray-400"
+							onClick={() => {
+								logout();
+								setBurgerOpen(false);
+							}}
+							className="text-sm bg-white text-purple border border-purple rounded-[50px] px-2 cursor-pointer hover:text-gray-400"
 						>
 							Logout
 						</Link>
