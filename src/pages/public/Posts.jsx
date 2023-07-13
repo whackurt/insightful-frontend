@@ -3,8 +3,9 @@ import SearchBar from '../../components/posts/SearchBar';
 import AllPosts from '../../components/posts/AllPosts';
 import Container from '../../components/containers/Container';
 import { SearchPost } from '../../services/post/post';
+import { useLocation } from 'react-router-dom';
 
-const Posts = ({ setPrev }) => {
+const Posts = ({ setPrev, user }) => {
 	const [searchVal, setSearchVal] = useState('');
 	const [searchRes, setSearchRes] = useState(null);
 
@@ -19,7 +20,7 @@ const Posts = ({ setPrev }) => {
 	}, [searchVal]);
 
 	useEffect(() => {
-		setPrev('/posts');
+		setPrev(location.pathname);
 	}, []);
 
 	return (
@@ -27,7 +28,7 @@ const Posts = ({ setPrev }) => {
 			<Container>
 				<div className="flex flex-col gap-y-8">
 					<SearchBar searchVal={searchVal} setSearchVal={setSearchVal} />
-					<AllPosts searchResults={searchRes} />
+					<AllPosts user={user} searchResults={searchRes} />
 				</div>
 			</Container>
 		</>

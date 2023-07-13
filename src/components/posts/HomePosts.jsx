@@ -5,7 +5,7 @@ import SectionLabel from '../label/SectionLabel';
 import PostSpinner from '../spinners/PostSpinner';
 import PostCard from './PostCard';
 
-const HomePosts = () => {
+const HomePosts = ({ user, prev }) => {
 	const [loading, setLoading] = useState(false);
 	const { posts } = useFetchPosts(setLoading);
 
@@ -23,7 +23,7 @@ const HomePosts = () => {
 					?.filter((post) => post?.featured === true)
 					?.slice(0, 1)
 					.map((feat) => (
-						<PostCard post={feat} />
+						<PostCard prev={prev} user={user} post={feat} />
 					))}
 			</div>
 
@@ -38,7 +38,7 @@ const HomePosts = () => {
 					?.filter((post) => post?.featured === false)
 					?.slice(0, 4)
 					.map((rec) => (
-						<PostCard post={rec} />
+						<PostCard prev={prev} user={user} post={rec} />
 					))}
 			</div>
 		</div>
