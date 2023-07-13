@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import HomePosts from '../../components/posts/HomePosts';
 import { useReload } from '../../hooks/useReload';
 import WtContainer from '../../components/containers/WtContainer';
 import { RiLightbulbFlashLine } from 'react-icons/ri';
 
-const WtHome = ({ user, setPrev }) => {
-	useReload();
+const WtHome = ({ user, prev, setPrev }) => {
+	const location = useLocation();
 
+	useReload();
 	useEffect(() => {
-		setPrev('/');
+		setPrev(location.pathname);
 	}, []);
 	return (
 		<>
@@ -28,9 +29,9 @@ const WtHome = ({ user, setPrev }) => {
 				</div>
 			</div>
 			<WtContainer user={user}>
-				<HomePosts />
+				<HomePosts prev={prev} user={user} />
 				{/* See more */}
-				<div className="flex justify-center py-16">
+				<div className="flex justify-center py-8">
 					<Link
 						to={'/posts'}
 						className="w-full p-2 bg-purple text-white rounded-[50px] cursor-pointer border-2 text-center border-gray-500 hover:shadow-lg"

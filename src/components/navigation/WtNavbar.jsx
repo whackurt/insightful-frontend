@@ -26,7 +26,7 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 	};
 
 	return (
-		<nav className="fixed px-8 py-4 bg-white w-full shadow-sm z-20 top-0 left-0">
+		<nav className="fixed border-b border-purple px-8 py-4 bg-white w-full shadow-sm z-20 top-0 left-0">
 			{/* main nav */}
 			<div className="hidden lg:grid lg:grid-cols-3">
 				<Link
@@ -55,7 +55,7 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 					<h1 className="text-purple font-semibold font-poppins">{`${user?.first_name} ${user?.last_name}`}</h1>
 					<Link
 						onClick={() => logout()}
-						className="bg-white text-purple border border-purple hover:shadow-lg px-3 py-1 rounded-[50px] border"
+						className="bg-white text-purple border border-purple hover:shadow-lg px-3 py-1 rounded-[50px]"
 					>
 						Logout
 					</Link>

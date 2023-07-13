@@ -91,7 +91,7 @@ function App() {
 					path="/myposts"
 					element={
 						<PrivateRoute redirect={'/login'}>
-							<MyPosts user={user} />
+							<MyPosts prev={prevPage} setPrev={setPrevPage} user={user} />
 						</PrivateRoute>
 					}
 				/>
@@ -101,7 +101,7 @@ function App() {
 					path="/myposts/:postId"
 					element={
 						<PrivateRoute redirect={'/login'}>
-							<ViewMyPost setPrev={setPrevPage} user={user} />
+							<ViewMyPost prev={prevPage} user={user} />
 						</PrivateRoute>
 					}
 				/>

@@ -42,7 +42,7 @@ const Navbar = () => {
 				<div className="lg:flex gap-x-2 justify-center items-center">
 					<Link
 						to={'/login'}
-						className="bg-white text-purple border-mainText hover:shadow-lg hover:border-purple px-4 py-1 rounded-[50px] border"
+						className="bg-white text-purple border border-mainText hover:shadow-lg hover:border-purple px-4 py-1 rounded-[50px]"
 					>
 						Login
 					</Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
 						))}
 						<Link
 							to={'/login'}
-							className={`text-sm cursor-pointer border-b hover:text-gray-400 ${
+							className={`min-w-[80px] text-center text-sm cursor-pointer border border-purple px-3 py-1 rounded-[50px] hover:shadow-md ${
 								location.pathname === '/login'
 									? 'text-purple border-b border-purple'
 									: ' '
@@ -112,7 +112,7 @@ const Navbar = () => {
 						</Link>
 						<Link
 							to={'/signup'}
-							className={`text-sm cursor-pointer border-b hover:text-gray-400 ${
+							className={`min-w-[80px] text-sm cursor-pointer bg-purple text-white rounded-[50px] px-3 py-1 hover:shadow-md ${
 								location.pathname === '/signup'
 									? 'text-purple border-b border-purple'
 									: ' '

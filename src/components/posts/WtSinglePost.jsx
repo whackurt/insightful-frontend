@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { RiLightbulbFlashLine } from 'react-icons/ri';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
@@ -9,7 +9,7 @@ import { DeletePost } from '../../services/post/post';
 import Modal from '../modal/Modal';
 import PostSpinner from '../spinners/PostSpinner';
 
-const WtSinglePost = ({ setPrev }) => {
+const WtSinglePost = ({ prev }) => {
 	const [loading, setLoading] = useState(false);
 	const [deleteLoading, setDeleteLoading] = useState(false);
 	const { postId } = useParams();
@@ -30,10 +30,6 @@ const WtSinglePost = ({ setPrev }) => {
 		});
 	};
 
-	useEffect(() => {
-		setPrev(`/myposts/${postId}`);
-	}, []);
-
 	return (
 		<>
 			{openModal ? (
@@ -51,7 +47,7 @@ const WtSinglePost = ({ setPrev }) => {
 				/>
 			) : null}
 			<div className="flex justify-between">
-				<Link className="text-mainText hover:text-purple" to={`/myposts`}>
+				<Link className="text-mainText hover:text-purple" to={prev}>
 					<IoMdArrowRoundBack size={30} />
 				</Link>
 				<div className="flex gap-x-2">
