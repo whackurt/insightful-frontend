@@ -18,7 +18,10 @@ const SinglePost = () => {
 	return (
 		<>
 			<Container>
-				<Link className="text-mainText hover:text-purple" to={`${`/posts`}`}>
+				<Link
+					className="text-mainText hover:text-purple"
+					to={`${localStorage.getItem('prev')}`}
+				>
 					<IoMdArrowRoundBack size={30} />
 				</Link>
 				<div className="flex flex-col items-center justify-center gap-y-4 py-8">

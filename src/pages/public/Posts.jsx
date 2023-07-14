@@ -20,9 +20,8 @@ const Posts = ({ setPrev, user }) => {
 	}, [searchVal]);
 
 	useEffect(() => {
-		setPrev(location.pathname);
+		localStorage.setItem('prev', '/posts');
 	}, []);
-
 	return (
 		<>
 			<Container>

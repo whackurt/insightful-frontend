@@ -12,7 +12,7 @@ const Home = ({ setPrev }) => {
 		setEmail('');
 	};
 	useEffect(() => {
-		setPrev('/');
+		localStorage.setItem('prev', '/');
 	}, []);
 	return (
 		<>
