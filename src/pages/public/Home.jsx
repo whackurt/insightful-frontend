@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import HomePosts from '../../components/posts/HomePosts';
 import Container from '../../components/containers/Container';
 
-const Home = ({ prev, setPrev }) => {
+const Home = ({ setPrev }) => {
 	const [email, setEmail] = useState('');
 	const handleSubmit = () => {
 		alert(email);

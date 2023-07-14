@@ -9,7 +9,7 @@ import { DeletePost } from '../../services/post/post';
 import Modal from '../modal/Modal';
 import PostSpinner from '../spinners/PostSpinner';
 
-const WtSinglePost = ({ prev }) => {
+const WtSinglePost = () => {
 	const [loading, setLoading] = useState(false);
 	const [deleteLoading, setDeleteLoading] = useState(false);
 	const { postId } = useParams();
@@ -47,7 +47,7 @@ const WtSinglePost = ({ prev }) => {
 				/>
 			) : null}
 			<div className="flex justify-between">
-				<Link className="text-mainText hover:text-purple" to={prev}>
+				<Link className="text-mainText hover:text-purple" to={'/myposts'}>
 					<IoMdArrowRoundBack size={30} />
 				</Link>
 				<div className="flex gap-x-2">
@@ -87,14 +87,14 @@ const WtSinglePost = ({ prev }) => {
 							</span>
 						</p>
 						<p
-							className="p-3 lg:p-8 font-poppins rounded-xl bg-white shadow-lg lg:text-lg"
+							className="p-3 lg:p-8 font-poppins bg-white shadow-lg lg:text-lg rounded-bl-[30px] rounded-tr-[30px]"
 							dangerouslySetInnerHTML={{ __html: postdata?.summary }}
 						></p>
 					</>
 				)}
 			</div>
 			<div
-				className="pb-8 lg:py-6 lg:text-lg px-10"
+				className="pb-8 lg:py-6 lg:text-lg px-2 lg:px-10"
 				dangerouslySetInnerHTML={{ __html: postdata?.content }}
 			></div>
 		</>

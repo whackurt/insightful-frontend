@@ -16,7 +16,7 @@ const Modal = ({
 	const navigate = useNavigate();
 	return (
 		<>
-			<div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center ">
+			<div className="fixed px-2 inset-0 backdrop-blur-sm flex justify-center items-center ">
 				<div className="bg-white border border-purple flex flex-col gap-y-4 px-8 py-4 min-h-[180px] min-w-[400px] items-center rounded">
 					{loading ? (
 						<PostSpinner />

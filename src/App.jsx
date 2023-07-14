@@ -19,6 +19,7 @@ import SinglePost from './components/posts/SinglePost';
 import ViewMyPost from './pages/writer/ViewMyPost';
 import EditPost from './pages/writer/EditPost';
 import useFetchUser from './hooks/useFetchUser';
+import NotFound from './pages/404/NotFound';
 
 function App() {
 	const { user } = useFetchUser(
@@ -29,12 +30,19 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(
 		localStorage.getItem('user_id') ? true : false
 	);
+	const blogName = 'insightful';
+
 	return (
 		<div className="bg-[#f1f0f2] text-maintext">
 			{loggedIn || localStorage.getItem('user_id') ? (
-				<WtNavbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
+				<WtNavbar
+					blogName={blogName}
+					loggedIn={loggedIn}
+					setLoggedIn={setLoggedIn}
+					user={user}
+				/>
 			) : (
-				<Navbar />
+				<Navbar blogName={blogName} />
 			)}
 			<Routes>
 				<Route
@@ -51,13 +59,14 @@ function App() {
 					path="/posts"
 					element={<Posts user={user} prev={prevPage} setPrev={setPrevPage} />}
 				/>
+				<Route exact path="/posts/:postId" element={<SinglePost />} />
+				<Route exact path="/about" blogName={blogName} element={<About />} />
 				<Route
 					exact
-					path="/posts/:postId"
-					element={<SinglePost prev={prevPage} setPrev={setPrevPage} />}
+					path="/contact"
+					blogName={blogName}
+					element={<Contact />}
 				/>
-				<Route exact path="/about" element={<About />} />
-				<Route exact path="/contact" element={<Contact />} />
 				<Route
 					exact
 					path="/login"
@@ -101,7 +110,7 @@ function App() {
 					path="/myposts/:postId"
 					element={
 						<PrivateRoute redirect={'/login'}>
-							<ViewMyPost prev={prevPage} user={user} />
+							<ViewMyPost user={user} />
 						</PrivateRoute>
 					}
 				/>
@@ -125,8 +134,10 @@ function App() {
 						</PrivateRoute>
 					}
 				/>
+
+				<Route path="*" element={<NotFound />} loggedIn={loggedIn} />
 			</Routes>
-			<Footer />
+			<Footer blogName={blogName} />
 		</div>
 	);
 }

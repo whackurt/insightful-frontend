@@ -7,7 +7,7 @@ const PostCard = ({ post, myPosts, user }) => {
 	return (
 		<div
 			key={post?._id}
-			className={`flex flex-col bg-white hover:text-purple gap-y-2 article mb-8 p-4 lg:p-6 shadow-lg rounded-lg `}
+			className={`flex flex-col bg-white hover:text-purple gap-y-2 article mb-8 p-4 lg:p-6 shadow-lg rounded-bl-[30px] rounded-tr-[30px]`}
 		>
 			<Link
 				to={`/${

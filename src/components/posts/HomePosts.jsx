@@ -23,7 +23,7 @@ const HomePosts = ({ user, prev }) => {
 					?.filter((post) => post?.featured === true)
 					?.slice(0, 1)
 					.map((feat) => (
-						<PostCard prev={prev} user={user} post={feat} />
+						<PostCard key={feat?._id} prev={prev} user={user} post={feat} />
 					))}
 			</div>
 
@@ -38,7 +38,7 @@ const HomePosts = ({ user, prev }) => {
 					?.filter((post) => post?.featured === false)
 					?.slice(0, 4)
 					.map((rec) => (
-						<PostCard prev={prev} user={user} post={rec} />
+						<PostCard key={rec?._id} prev={prev} user={user} post={rec} />
 					))}
 			</div>
 		</div>

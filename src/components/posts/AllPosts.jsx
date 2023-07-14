@@ -26,7 +26,7 @@ const AllPosts = ({ searchResults, user, setPrev, prev }) => {
 						{posts
 							?.filter((post) => post?.featured === true)
 							.map((post) => (
-								<PostCard prev={prev} user={user} post={post} />
+								<PostCard key={post?._id} prev={prev} user={user} post={post} />
 							))}
 					</div>
 
@@ -39,7 +39,7 @@ const AllPosts = ({ searchResults, user, setPrev, prev }) => {
 						{posts
 							?.filter((post) => post.featured === false)
 							.map((post) => (
-								<PostCard user={user} post={post} />
+								<PostCard key={post?._id} user={user} post={post} />
 							))}
 					</div>
 				</>

@@ -2,10 +2,10 @@ import React from 'react';
 import WtContainer from '../../components/containers/WtContainer';
 import WtSinglePost from '../../components/posts/WtSinglePost';
 
-const ViewMyPost = ({ prev }) => {
+const ViewMyPost = () => {
 	return (
 		<WtContainer>
-			<WtSinglePost prev={prev} />
+			<WtSinglePost />
 		</WtContainer>
 	);
 };

@@ -3,7 +3,7 @@ import { RiLightbulbFlashLine } from 'react-icons/ri';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ blogName }) => {
 	const [burgerOpen, setBurgerOpen] = useState(false);
 	const location = useLocation();
 	const sections = [
@@ -22,7 +22,7 @@ const Navbar = () => {
 					className="flex text-purple justify-center items-center gap-x-1"
 				>
 					<RiLightbulbFlashLine size={35} />
-					<h1 className="lg:text-2xl font-poppins font-semibold">insightful</h1>
+					<h1 className="lg:text-2xl font-poppins font-semibold">{blogName}</h1>
 				</Link>
 				<ul className="lg:flex justify-center hidden gap-x-6 items-center ">
 					{sections.map((section) => (
