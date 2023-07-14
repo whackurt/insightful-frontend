@@ -44,7 +44,7 @@ const SinglePost = () => {
 								</span>
 							</p>
 							<p
-								className="p-3 lg:p-8 font-poppins bg-white shadow-lg lg:text-lg rounded-bl-[30px] rounded-tr-[30px]"
+								className="p-3 lg:p-8 font-poppins border border-purple bg-white shadow-lg lg:text-lg rounded-bl-[30px] rounded-tr-[30px]"
 								dangerouslySetInnerHTML={{ __html: postdata?.summary }}
 							></p>
 						</>
