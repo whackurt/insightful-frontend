@@ -33,7 +33,7 @@ function App() {
 	const blogName = 'insightful';
 
 	return (
-		<div className="bg-[#f1f0f2] text-maintext">
+		<div className="bg-[#f5f4f4] text-maintext">
 			{loggedIn || localStorage.getItem('user_id') ? (
 				<WtNavbar
 					blogName={blogName}
