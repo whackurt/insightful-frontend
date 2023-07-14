@@ -10,7 +10,7 @@ const WtHome = ({ user, prev, setPrev }) => {
 
 	useReload();
 	useEffect(() => {
-		setPrev(location.pathname);
+		localStorage.setItem('prev', '/home');
 	}, []);
 	return (
 		<>
