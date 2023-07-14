@@ -3,7 +3,7 @@ import { RiLightbulbFlashLine } from 'react-icons/ri';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const WtNavbar = ({ user, setLoggedIn }) => {
+const WtNavbar = ({ user, setLoggedIn, blogName }) => {
 	const [burgerOpen, setBurgerOpen] = useState(false);
 	const navigate = useNavigate();
 	const sections = [
@@ -34,7 +34,7 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 					className="flex text-purple justify-center items-center gap-x-1"
 				>
 					<RiLightbulbFlashLine color="#5300c7" size={35} />
-					<h1 className="lg:text-2xl font-poppins font-semibold">insightful</h1>
+					<h1 className="lg:text-2xl font-poppins font-semibold">{blogName}</h1>
 				</Link>
 				<ul className="lg:flex justify-center hidden gap-x-6 items-center">
 					{sections.map((section) => (
@@ -55,7 +55,7 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 					<h1 className="text-purple font-semibold font-poppins">{`${user?.first_name} ${user?.last_name}`}</h1>
 					<Link
 						onClick={() => logout()}
-						className="bg-white text-purple border border-purple hover:shadow-lg px-3 py-1 rounded-[50px]"
+						className="bg-white text-purple border border-mainText hover:border-purple hover:shadow-lg px-3 py-1 rounded-[50px]"
 					>
 						Logout
 					</Link>
@@ -111,7 +111,7 @@ const WtNavbar = ({ user, setLoggedIn }) => {
 								logout();
 								setBurgerOpen(false);
 							}}
-							className="text-sm bg-white text-purple border border-purple rounded-[50px] px-2 cursor-pointer hover:text-gray-400"
+							className="text-sm bg-white text-purple border border-mainText rounded-[50px] px-2 cursor-pointer hover:text-gray-400"
 						>
 							Logout
 						</Link>

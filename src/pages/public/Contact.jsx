@@ -20,17 +20,17 @@ const Contact = () => {
 								information provided below. We will do our best to respond to
 								your message in a timely manner.
 							</p>
-							<div className="flex justify-center">
+							<div className="flex justify-center bg-white p-2 rounded-xl">
 								<div className="flex flex-col gap-y-4">
-									<p className="flex lg:text-lg items-center gap-x-2 hover:text-purple">
+									<p className="flex lg:text-lg items-center gap-x-2 text-purple">
 										<span>
 											<AiOutlineMail />
 										</span>
-										<strong className="underline hover:text-purple">
+										<strong className="underline ">
 											info@insightfulblog.com
 										</strong>
 									</p>
-									<p className="flex text-lg hover:text-purple items-center gap-x-2">
+									<p className="flex text-lg text-purple items-center gap-x-2">
 										<span>
 											<AiOutlinePhone />
 										</span>
@@ -42,9 +42,9 @@ const Contact = () => {
 								For media inquiries, partnership opportunities, or collaboration
 								requests, please contact:
 							</p>
-							<div className="flex justify-center">
-								<div>
-									<p className="flex text-lg hover:text-purple items-center gap-x-2">
+							<div className="flex justify-center bg-white p-2 rounded-xl">
+								<div className="">
+									<p className="flex text-lg text-purple items-center gap-x-2 ">
 										<span>
 											<AiOutlineMail />
 										</span>

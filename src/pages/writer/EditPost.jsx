@@ -45,6 +45,7 @@ const EditPost = ({ prev }) => {
 
 	useEffect(() => {
 		localStorage.removeItem('changesmade');
+		localStorage.setItem('post_id', postId);
 		setUpdates({
 			...updates,
 			title: postdata?.title,
@@ -69,7 +70,11 @@ const EditPost = ({ prev }) => {
 				/>
 			) : null}
 			<div className="flex flex-col">
-				<Link className="text-mainText hover:text-purple" to={prev}>
+				<Link
+					className="text-mainText hover:text-purple"
+					onClick={() => localStorage.removeItem('post_id')}
+					to={`/myposts/${localStorage.getItem('post_id')}`}
+				>
 					<IoMdArrowRoundBack size={30} />
 				</Link>
 				<div className="pt-12">

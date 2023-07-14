@@ -7,7 +7,7 @@ import moment from 'moment';
 import useFetchSinglePost from '../../hooks/useFetchSinglePost';
 import PostSpinner from '../spinners/PostSpinner';
 
-const SinglePost = ({ prev }) => {
+const SinglePost = () => {
 	const [loading, setLoading] = useState(false);
 	let { postId } = useParams();
 	const { postdata } = useFetchSinglePost({
@@ -18,7 +18,7 @@ const SinglePost = ({ prev }) => {
 	return (
 		<>
 			<Container>
-				<Link className="text-mainText hover:text-purple" to={`${prev}`}>
+				<Link className="text-mainText hover:text-purple" to={`${`/posts`}`}>
 					<IoMdArrowRoundBack size={30} />
 				</Link>
 				<div className="flex flex-col items-center justify-center gap-y-4 py-8">
@@ -41,14 +41,14 @@ const SinglePost = ({ prev }) => {
 								</span>
 							</p>
 							<p
-								className="p-3 lg:p-8 font-poppins rounded-xl bg-white shadow-lg lg:text-lg"
+								className="p-3 lg:p-8 font-poppins bg-white shadow-lg lg:text-lg rounded-bl-[30px] rounded-tr-[30px]"
 								dangerouslySetInnerHTML={{ __html: postdata?.summary }}
 							></p>
 						</>
 					)}
 				</div>
 				<div
-					className="pb-8 lg:py-6 lg:text-lg px-10"
+					className="pb-8 lg:py-6 lg:text-lg px-2 lg:px-10"
 					dangerouslySetInnerHTML={{ __html: postdata?.content }}
 				></div>
 			</Container>
