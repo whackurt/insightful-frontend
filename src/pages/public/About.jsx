@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../components/containers/Container';
 import { RiLightbulbFlashLine } from 'react-icons/ri';
+
 const About = () => {
 	return (
 		<>
