@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { GiPerspectiveDiceSixFacesFour } from 'react-icons/gi';
 import { RiLightbulbFlashLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import HomePosts from '../../components/posts/HomePosts';

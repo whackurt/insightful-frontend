@@ -20,6 +20,7 @@ import ViewMyPost from './pages/writer/ViewMyPost';
 import EditPost from './pages/writer/EditPost';
 import useFetchUser from './hooks/useFetchUser';
 import NotFound from './pages/404/NotFound';
+import ScrollToTop from './components/navigation/ScrollToTop';
 
 function App() {
 	const { user } = useFetchUser(
@@ -44,6 +45,7 @@ function App() {
 			) : (
 				<Navbar blogName={blogName} />
 			)}
+			<ScrollToTop />
 			<Routes>
 				<Route
 					exact

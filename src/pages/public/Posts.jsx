@@ -3,7 +3,6 @@ import SearchBar from '../../components/posts/SearchBar';
 import AllPosts from '../../components/posts/AllPosts';
 import Container from '../../components/containers/Container';
 import { SearchPost } from '../../services/post/post';
-import { useLocation } from 'react-router-dom';
 
 const Posts = ({ setPrev, user }) => {
 	const [searchVal, setSearchVal] = useState('');
